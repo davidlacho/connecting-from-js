@@ -74,3 +74,6 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+#eslint config
+.eslintrc.json
