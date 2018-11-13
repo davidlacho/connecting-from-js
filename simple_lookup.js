@@ -2,6 +2,7 @@ require('dotenv').config();
 const {
   Client,
 } = require('pg');
+const moment = require('moment');
 
 const connection = (dbclient, name) => new Promise((resolve, reject) => {
   console.log(`Searching for ${name}...`);
@@ -22,7 +23,7 @@ const connection = (dbclient, name) => new Promise((resolve, reject) => {
 })
   .then((queryResults) => {
     queryResults.forEach((entry, index) => {
-      console.log(`- ${index+1 }: ${entry.first_name} ${entry.last_name}, born ${entry.birthdate}`);
+      console.log(`- ${index+1 }: ${entry.first_name} ${entry.last_name}, born '${moment(entry.birthdate).format('YYYY-MM-DD')}'`);
     });
     dbclient.end();
   })
