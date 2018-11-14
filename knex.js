@@ -1,17 +1,7 @@
 require('dotenv').config();
 const moment = require('moment');
-
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    hostname: process.env.DB_HOSTNAME,
-    port: process.env.DB_PORT,
-    ssl: process.env.DB_SSL,
-  },
-});
+const settings = require('./settings');
+const knex = require('knex')(settings);
 
 knex.select('*')
   .from('famous_people')

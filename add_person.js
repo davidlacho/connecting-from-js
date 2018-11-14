@@ -1,17 +1,9 @@
 require('dotenv').config();
 const moment = require('moment');
+const settings = require('./settings.js');
 
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    hostname: process.env.DB_HOSTNAME,
-    port: process.env.DB_PORT,
-    ssl: process.env.DB_SSL,
-  },
-});
+
+const knex = require('knex')(settings);
 
 const firstName = process.argv[2];
 const lastName = process.argv[3];
